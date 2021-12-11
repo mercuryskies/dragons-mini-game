@@ -34,17 +34,28 @@ export default {
 	computed: {
 		setIcon()
 		{
+			/*
+			Sure thing
+			Walk in the park
+			Piece of cake
+			Quite likely
+			Risky
+			*/
+
 			let { probability = 'Sure thing', _out = '' } = this.item;
 			switch (this.item.probability)
 			{
 				case 'Sure thing':
-					_out+= 'hpot';
+					_out+= 'ok';
 					break;
 				case 'Walk in the park':
-					_out+= 'hpot';
+					_out+= 'walk';
+					break;
+				case 'Piece of cake':
+					_out+= 'cake';
 					break;
 				default:
-					_out+= 'cs';
+					_out+= 'dice';
 					break;
 			}
 			return _out;

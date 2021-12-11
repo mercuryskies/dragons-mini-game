@@ -16,27 +16,28 @@
 				v-bar
 				class="container block contain flex start wrap"
 			>
-				<div class="reputation">
-					<h2 class="title typo-shadow">Stats</h2>
-					<div
-						class="stat flex end"
-						v-for="(value, stat) in setStats"
-						:key="stat"
-					>
-						<b class="capitalize">{{stat}}</b> <span>{{value}}</span>
+				<div>
+					<div class="reputation">
+						<h2 class="title typo-shadow">Stats</h2>
+						<div
+							class="stat flex end"
+							v-for="(value, stat) in setStats"
+							:key="stat"
+						>
+							<b class="capitalize">{{stat}}</b> <span>{{value}}</span>
+						</div>
+					</div>
+					<div class="reputation" v-if="game.reputation">
+						<h2 class="title typo-shadow">Reputation</h2>
+						<div
+							class="stat flex end"
+							v-for="(value, stat) in game.reputation"
+							:key="stat"
+						>
+							<b class="capitalize">{{stat}}</b> <span>{{value}}</span>
+						</div>
 					</div>
 				</div>
-				<div class="reputation">
-					<h2 class="title typo-shadow">Reputation</h2>
-					<div
-						class="stat flex end"
-						v-for="(value, stat) in game.reputation"
-						:key="stat"
-					>
-						<b class="capitalize">{{stat}}</b> <span>{{value}}</span>
-					</div>
-				</div>
-
 			</div>
 		</div>
 	</div>

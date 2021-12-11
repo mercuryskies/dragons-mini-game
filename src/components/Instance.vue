@@ -8,7 +8,7 @@
 				<path d="M0.00,92.27 C216.83,192.92 304.30,8.39 500.00,109.03 L500.00,0.00 L0.00,0.00 Z"></path>
 			</svg>
 		</div>
-		<h1 class="instanceTitle centered rounded border-outline">
+		<h1 class="instanceTitle centered rounded border-outline fadeInstance">
 			<span class="typo-shadow">{{game.location}}</span>
 		</h1>
 		<Camp v-if="isCamp"/>

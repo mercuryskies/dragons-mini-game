@@ -39,12 +39,5 @@ export const actions = {
 				this.dispatch('shop/buy', flow.id);
 				break;
 		}
-
-		/*this.commit('notice/show', {
-			type: 'Teleport',
-			flow: payload
-		});
-		//console.log(this);
-		console.log('teleporting '+payload)*/
 	}
 };

@@ -64,7 +64,7 @@ export default {
 		},
 		isBasic()
 		{
-			return ['Building', 'Inventory', 'Task', 'Purchase'].includes(this.type);
+			return ['Error', 'Building', 'Inventory', 'Task', 'Purchase'].includes(this.type);
 		},
 		isTeleport()
 		{

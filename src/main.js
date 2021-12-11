@@ -11,9 +11,8 @@ Vue.use(VueAxios, axios);
 import Vuebar from 'vuebar';
 Vue.use(Vuebar);
 
-import movable from 'v-movable';
-Vue.use(movable);
-
+import VueMeta from 'vue-meta';
+Vue.use(VueMeta);
 
 Vue.config.productionTip = false;
 

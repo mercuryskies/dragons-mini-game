@@ -203,7 +203,6 @@ export const actions = {
 	init ({ state, commit, dispatch })
 	{
 		const { gameId } = state.game;
-		console.log(gameId);
 		if (!gameId) return;
 		commit('INIT_GAME');
 		//init data
@@ -214,7 +213,7 @@ export const actions = {
 
 	async investigate ({ state, commit })
 	{
-		const { gameId } = state;
+		const { gameId } = state.game;
 		if (!gameId) return;
 		const { data } = await Client.investigate({ gameId });
 		//TODO! model validation

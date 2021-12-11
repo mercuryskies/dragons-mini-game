@@ -59,14 +59,14 @@ export const actions = {
 
 	async solve ({ commit, dispatch }, { adId, message: msg })
 	{
-		console.log(msg);
 		const gameId = this.getters['game/id'];
 		if (!gameId || !adId) return;
 		const { data } = await Client.solve({ gameId, adId });//TODO! model validation
 		const { success, message, ...stats } = data;
+		//dispatch('init', gameId);//update tasks
 		if (!message) return;
-		dispatch('init', gameId);//update tasks
 		commit('SET_JOURNAL', {...data, adId, msg});
+		this.dispatch('game/investigate');
 		this.commit('game/SET_STATS', stats);
 		this.commit('notice/show', {
 			type: 'Task',

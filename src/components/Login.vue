@@ -20,7 +20,7 @@
 				@keyup.enter="start"
 			/>
 			<button 
-				type="button" 
+				type="submit" 
 				class="button rounded bg-glare" 
 				@click="start"
 			>

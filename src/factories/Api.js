@@ -1,4 +1,5 @@
 import axios from 'axios';
+import store from '@/store';
 
 //const baseDomain = process.env.NODE_ENV === 'development' ? process.env.VUE_BASE_DOMAIN : 'https://dragonsofmugloar.com';
 const baseDomain = 'https://dragonsofmugloar.com';
@@ -7,28 +8,42 @@ export const baseURL = `${baseDomain}${urlPostfix}`;
 
 const instance = axios.create({
 	baseURL,
-	transformResponse: (responseString) => {
+	transformResponse: (data) => {
+		let response;
 		try 
 		{
-			/*
-			Error 400: 
-			{
-			    "error": "No ad by this ID exists"
-			}
-			*/
-
-
-
-			const response = JSON.parse(responseString);
-			return response;
-		}
-		catch (e)
+			response = JSON.parse(data);
+		} 
+		catch (e) 
 		{
-			//console.log(e);
 			return e;
+			//throw Error('JSON parse error');
 		}
+		return response;
 	},
 });
+
+instance.interceptors.response.use((response) => response,
+	async function(error) 
+	{
+		const originalRequest = error.config;
+
+		if (error?.response?.status === 400)
+		{
+			store.commit('notice/show', {
+				type: 'Error',
+				flow: {
+					description: 'Someone already took this task!',
+					icon: 'otter'
+				}
+			});
+			store.dispatch('tasks/init');
+			await store.dispatch('tasks/init');
+			return Promise.reject(error);
+		}
+		return Promise.reject(error);
+	}
+);
 
 export const request = (method, url, payload) => {
 	let urlParts = url.split('/');
@@ -44,7 +59,7 @@ export const request = (method, url, payload) => {
 		});
 	}
 	let fullPath = urlParts.join('/');
-	console.log(fullPath);
-	console.log('requesting');
+	//console.log(fullPath);
+	//console.log('requesting');
 	return instance[method](fullPath);
 };

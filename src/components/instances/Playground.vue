@@ -4,41 +4,34 @@
 			class="area absolute contain"
 			
 		>
-		<!--:style="{ width: setArea.size+'px', height: setArea.size+'px'  }"-->
-			<div 
-				class="places absolute flex wrap evently"
-				style="top:50%;left:50%;margin-left:-130px;margin-top:-130px;"
-
-			>
+			<div class="places absolute flex wrap evently">
 				<ItemPlace 
 					v-for="(item, index) in places"
 					:key="index"
 					:item="item"
 					:location="location"
 				/>
-
-				<!--{{spawns}}-->
 			</div>
-
-
-
-			<!--:style="{ top: setArea.center.y+'px', left: setArea.center.x+'px' }"-->
-
 			<div 
 				class="grounds absolute flex wrap"
-				:posTop="'-'+setArea.fix.y" 
-				:posLeft="'-'+setArea.fix.x"
-				:style="{ width: setArea.size+'px', height: setArea.size+'px'  }"
+				
+				:style="[{ 
+					width: setArea.size+'px', 
+					height: setArea.size+'px', 
+					'margin-top': '-'+setArea.top+'px', 
+					'margin-left': '-'+setArea.left+'px' 
+				}]"
 			>
 				<div 
 					class="ground noSelect"
 					v-for="(ground, index) in setArea.areas"
 					:key="index"
 					:style="{ width: setArea.blockSize+'px', height: setArea.blockSize+'px' }"
-					:class="[ ground.level ? 'lvl-'+ground.level : '', { center: ground.pos === ground.center } ]"
-					:ref="'ground-'+ground.pos"
+					:class="[ ground.level ? 'lvl-'+ground.level : '', { center: ground.pos === ground.center }, 'ground_'+ground.pos ]"
+					:ref="'ground_'+ground.pos"
 				/>	
 			</div>
+			{{setSpawns}}
 		</div>
 	</div>
 </template>
@@ -74,7 +67,7 @@ export default {
 			chunksLength = chunksLength + (!this.isOdd(chunksLength) ? 5 : 4);
 			let size = chunksLength * blockSize;
 
-			let suburbs = [];
+			const suburbs = [];
 
 			let areas = [...Array(chunksLength * chunksLength).keys()].reduce((acc, v) => {
 				let pos = v + 1;
@@ -99,20 +92,17 @@ export default {
 				return acc;
 			},[]);
 
-			let center = {
-				//x: (size - blockSize) / 2,
-				//y: (size - blockSize) / 2
-				x: size,
-				y: (size - blockSize) / 2
-			};
-
-			let fix = {
-				x: ((size - innerWidth) / 2),
-				y: (size - innerHeight + blockSize) / 2
-			};
+			let top = size / 2;
+			let left = size / 2;
 
 			return {
-				size, blockSize, areas, suburbs, center, fix
+				size, 
+				top,
+				left,
+				blockSize, 
+				chunksLength,
+				areas, 
+				suburbs,
 			};
 		},
 		setSpawns()
@@ -120,11 +110,41 @@ export default {
 			let suburbs = this.setArea?.suburbs;
 			let spawns = this.spawns;
 			if (!suburbs || !spawns) return;
-			return [];
+			let randomMax = suburbs.length - 1;
+			const spawnPositions = {};
 
-			//return spawns.reduce((acc, v) => {
-			//	return acc;
-			//},[]);
+			spawns.reduce((acc, v) => {
+				acc++;
+				let [ name, max ] = Object.entries(v)[0];
+				let spawn = [...Array(max).keys()].map((o, i) => {
+					let pos = suburbs[Math.floor(Math.random() * (randomMax + 1))];
+					if (!spawnPositions[pos]) spawnPositions[pos] = [];
+					let offset = (acc + i) * 10;
+					let obj = {
+						name,
+						top: acc,
+						left: acc,
+						offset
+					};
+					spawnPositions[pos].push(obj);
+					return;
+				});
+				return acc;
+			},0);
+
+			this.$nextTick(() => {
+				Object.keys(spawnPositions).forEach((pos) => {
+					const element = document.querySelector('.ground_'+pos);
+					spawnPositions[pos].forEach((spawn) => {
+						let top = spawn.top * 10;
+						let left = spawn.top * 10;
+						let el = `<i class="icon far fa-${spawn.name}" style="padding-top:${top}px;padding-left:${left}px;margin:${spawn.offset}px"></i>`;
+						element.innerHTML += el;
+					});
+				});
+			});
+
+			return true;
 		}
 	},
 

@@ -74,7 +74,7 @@ a:hover {text-decoration:none;}
 .instanceTitle span {display:inline-block;position:relative;line-height:36px;}
 .instanceTitle span:before {left:-10px;}
 .instanceTitle span:after {right:-10px;}
-.instanceTitle span:before, .instanceTitle span:after {position:absolute;color:#fff;content:'*';}
+.instanceTitle span:before, .instanceTitle span:after {position:absolute;line-height:42px;color:#fff;content:'*';}
 /*camp*/
 .instanceGuide {height:100%;bottom:0;left:0;background:#131e20;}
 .instanceGuide .ground {width:100%;bottom:0;fill:#131a1e;}
@@ -92,12 +92,14 @@ a:hover {text-decoration:none;}
 .instanceGuide .bonfire:before {width:110px;position:absolute;bottom:20px;left:-10px;-webkit-box-shadow:0 0 80px 20px rgba(227,206,91,.3);-moz-box-shadow:0 0 80px 20px rgba(227,206,91,.3);box-shadow:0 0 80px 20px rgba(227,206,91,.3);content:'';z-index:6;}
 /*playground*/
 .playground {position:relative;z-index:5;}
-.playground .area {background:#7cada0;}
+.playground .area {background:#72a194;}
+.playground .grounds {top:50%;left:50%;}
 .playground .ground {position:relative;z-index:6;}
-.playground .ground.lvl-1 {}
-.playground .ground.center {}
+.playground .ground.lvl-1 {padding:30px;background:#7cada0;z-index:7;}
+.playground .ground.lvl-1 i {width:20px;height:20px;display:inline-block;font-size:14px;}
+.playground .ground.center {background:#a0d1c3;}
 .playground .ground.lvl-1, .playground .ground.center {}
-.playground .places {width:260px;height:260px;position:absolute;z-index:100;}
+.playground .places {width:260px;height:260px;position:absolute;top:50%;left:50%;margin-left:-130px;margin-top:-130px;padding:10px;z-index:100;}
 
 
 /* PLACE */
@@ -201,9 +203,9 @@ a:hover {text-decoration:none;}
 .modal.player .top {width:100%;height:50px;top:30px;left:0;padding:0 80px;z-index:5;}
 .modal.player .top .username {margin-bottom:10px;font-size:30px;font-weight:bold;color:#fff;}
 .modal.player .health {width:33%;height:30px;position:relative;background:#ddd;-webkit-border-radius:15px;-moz-border-radius:15px;border-radius:15px;overflow:hidden;}
-.modal.player .reputation {padding:0 50px;}
+.modal.player .reputation {padding:10px 50px;}
 .modal.player .reputation .title {font-size:24px;font-weight:bold;}
-.modal.player .reputation .stat {padding:10px 0;color:#aaa;border-bottom:2px dotted rgba(255,255,255,.2);}
+.modal.player .reputation .stat {padding:5px 0;color:#aaa;border-bottom:2px dotted rgba(255,255,255,.2);}
 .modal.player .reputation .stat span {text-align:right;}
 .modal.player .reputation .stat * {flex:1 0px;}
 /*menu*/
@@ -254,6 +256,13 @@ a:hover {text-decoration:none;}
 @-moz-keyframes fadein {from {opacity:0;} to {opacity:1;}}
 @-o-keyframes fadein {from {opacity:0;} to {opacity:1;}}
 @-ms-keyframes fadein {from {opacity:0;} to {opacity:1;}}
+
+.fadeInstance {animation:fadeInstance 1.5s forwards;-webkit-animation:fadeInstance 1.5s forwards;-moz-animation:fadeInstance 1.5s forwards;-ms-animation:fadeInstance 1.5s forwards;-o-animation:instanceTitle 1.5s forwards;}
+@keyframes fadeInstance {0% {transform:translateY(-100px);}40%, 80% {transform:translateY(0);}100% {transform:translateY(-100px);}}
+@-webkit-keyframes fadeInstance {0% {-webkit-transform:translateY(-100px);}40%, 80% {-webkit-transform:translateY(0);}100% {-webkit-transform:translateY(-100px);}}
+@-moz-keyframes fadeInstance {0% {-moz-transform:translateY(-100px);}40%, 80% {-moz-transform:translateY(0);}100% {-moz-transform:translateY(-100px);}}
+@-ms-keyframes fadeInstance {0% {-ms-transform:translateY(-100px);}40%, 80% {-ms-transform:translateY(0);}100% {-ms-transform:translateY(-100px);}}
+
 
 
 .fade-enter-active, .fade-leave-active {
