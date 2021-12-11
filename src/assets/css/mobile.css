@@ -1,0 +1,26 @@
+@charset "utf-8";
+
+
+@media screen and (max-width: 760px){
+.instanceTitle {top:190px;}
+.modal.player .top {padding:0 40px;}
+.modal.player .reputation {padding:10px;}
+}
+
+@media screen and (max-width: 620px){
+.instanceGuide .guide {left:20px;}
+}
+
+@media screen and (max-width: 600px){
+.instanceGuide .guide {left:20px;}
+.iProduct {width:48%;}
+}
+
+@media screen and (max-width: 500px){
+.instanceGuide .guide .dialogue {left:90px;}
+.instanceGuide .bonfire {left:200px;}
+}
+
+@media screen and (max-width: 460px){
+.int.map .button {display:none;}
+}

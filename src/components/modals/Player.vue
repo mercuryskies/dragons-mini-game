@@ -34,7 +34,7 @@
 							v-for="(value, stat) in game.reputation"
 							:key="stat"
 						>
-							<b class="capitalize">{{stat}}</b> <span>{{value}}</span>
+							<b class="capitalize">{{stat}}</b> <span>{{Math.round(value * 100) / 100}}</span>
 						</div>
 					</div>
 				</div>

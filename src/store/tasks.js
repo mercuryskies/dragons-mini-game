@@ -62,9 +62,9 @@ export const actions = {
 		const gameId = this.getters['game/id'];
 		if (!gameId || !adId) return;
 		const { data } = await Client.solve({ gameId, adId });//TODO! model validation
-		const { success, message, ...stats } = data;
-		//dispatch('init', gameId);//update tasks
+		const { message, ...stats } = data;
 		if (!message) return;
+		dispatch('init', gameId);//update tasks
 		commit('SET_JOURNAL', {...data, adId, msg});
 		this.dispatch('game/investigate');
 		this.commit('game/SET_STATS', stats);

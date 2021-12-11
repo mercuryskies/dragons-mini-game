@@ -36,6 +36,7 @@ export default {
 <style>
 @import './assets/css/luckyprod.css';
 @import './assets/css/app.css';
+@import './assets/css/mobile.css';
 @import './assets/fonts/fa/css/fontawesome.css';
 @import './assets/fonts/fa/css/regular.css';
 </style>
