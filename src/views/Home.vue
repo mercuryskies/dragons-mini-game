@@ -19,7 +19,7 @@ export default {
 	computed: {
 		isStarted()
 		{
-			return this.$store?.getters?.['game/started'] ?? false;
+			return this.$get('game/started');
 		}
 	}
 }
