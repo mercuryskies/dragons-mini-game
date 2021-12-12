@@ -54,6 +54,16 @@ export const actions = {
 		const gameId = id ?? this.getters['game/id'];
 		if (!gameId) return;
 		const { data } = await Client.explore({ gameId });//TODO! model validation
+		data.forEach((i) => {
+			let encrypted = i.encrypted;
+			if (encrypted)
+			{
+				//base64 / ROT13
+				i.adId = encrypted == 1 ? atob(i.adId) : caesarShift(i.adId);
+				i.message = encrypted == 1 ? atob(i.message) : caesarShift(i.message);
+				i.probability = encrypted == 1 ? atob(i.probability) : caesarShift(i.probability);
+			}
+		});
 		commit('SET_ITEMS', data);
 	},
 
@@ -68,11 +78,29 @@ export const actions = {
 		commit('SET_JOURNAL', {...data, adId, msg});
 		this.dispatch('game/investigate');
 		this.commit('game/SET_STATS', stats);
+		this.commit('game/SET_STAGE', 2);//TODO!
 		this.commit('notice/show', {
 			type: 'Task',
 			flow: data
 		});
 	}
+};
+
+
+const caesarShift = (v) => {
+	let output = '';
+	for (let i = 0; i < v.length; i++) 
+	{
+		let c = v[i];
+		if (c.match(/[a-z]/i)) 
+		{
+			let code = v.charCodeAt(i);
+			if (code >= 65 && code <= 90) c = String.fromCharCode(((code - 65 + 13) % 26) + 65);
+			if (code >= 97 && code <= 122) c = String.fromCharCode(((code - 97 + 13) % 26) + 97);
+		}
+		output += c;
+	}
+	return output;
 };
 
 

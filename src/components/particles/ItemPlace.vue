@@ -47,12 +47,12 @@ export default {
 	methods: {
 		enter()
 		{
-			if (this.isOpen) return this.$store.commit('game/enterPlace', this.item.id);
+			if (this.isOpen) return this.$set('game/enterPlace', this.item.id);
 			if (this.hasDescription) 
 			{
 				let { description, ...item } = this.item;
 				Object.assign(item, { description: this.setDescription });
-				this.$store.commit('notice/show', {
+				this.$set('notice/show', {
 					type: 'Building',
 					flow: item
 				});

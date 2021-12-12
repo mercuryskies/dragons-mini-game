@@ -9,7 +9,7 @@
 		<button 
 			class="button absolute rounded border-outline" 
 			type="button" 
-			@click="leave"
+			@click="$set('game/leavePlace')"
 		>
 			<div class="typo-shadow">
 				<span>Leave</span>
@@ -35,11 +35,5 @@ export default {
 				: location.title+' '+place.title;
 		}
 	},
-	methods: {
-		leave()
-		{
-			this.$store.commit('game/leavePlace');
-		}
-	}
 }
 </script>

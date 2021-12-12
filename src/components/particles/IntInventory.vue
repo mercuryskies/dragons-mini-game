@@ -25,14 +25,14 @@ export default {
 	computed: {
 		inventory()
 		{
-			return this.$store.getters['game/inventory'];
+			return this.$get('game/inventory');
 		},
 	},
 
 	methods: {
 		open()
 		{
-			this.$store.commit('modal/show', {
+			this.$set('modal/show', {
 				type: 'Inventory'
 			});
 		},

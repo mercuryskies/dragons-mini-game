@@ -12,7 +12,7 @@
 		<button 
 			class="button btnClose absolute centered" 
 			type="button"
-			@click="hide"
+			@click="$set('modal/hide')"
 		>
 			<i class="icon far fa-times typo-shadow"></i>
 		</button>
@@ -25,12 +25,5 @@ export default {
 		title: String,
 		icon: String
 	},
-
-	methods: {
-		hide()
-		{
-			this.$store.commit('modal/hide');
-		}
-	}
 }
 </script>

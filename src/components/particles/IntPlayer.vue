@@ -1,8 +1,9 @@
 <template>
 	<div class="int player fixed fadeIn">
 		<button
-			class="control circle border-outline"
+			class="control circle border-outline transition-03"
 			type="button"
+			id="playerControl"
 			@click="open"
 		>
 			<div class="avatar bg absolute circle">
@@ -24,7 +25,6 @@
 			/>
 			<i v-else class="death far fa-skull-crossbones"></i>
 		</button>
-		@Username
 	</div>
 </template>
 
@@ -49,7 +49,7 @@ export default {
 	methods: {
 		open()
 		{
-			this.$store.commit('modal/show', {
+			this.$set('modal/show', {
 				type: 'Player'
 			});
 		},

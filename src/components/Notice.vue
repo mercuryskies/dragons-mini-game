@@ -2,7 +2,7 @@
 	<div 
 		class="noticeArea fixed contain" 
 		v-show="isOpened" 
-		:class="{ opened: isOpened }"
+		:class="{ opened: isOpened, grayscale : !isAlive }"
 	>
 		<button 
 			class="overlay fixed contain noSelect"
@@ -49,15 +49,25 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
-
 export default {
 	computed: {
-		...mapGetters({
-			isOpened: 'notice/opened',
-			type: 'notice/type',
-			flow: 'notice/flow'
-		}),
+		isAlive()
+		{
+			return this.$get('game/alive');
+		},
+		isOpened()
+		{
+			return this.$get('notice/opened');
+		},
+		type()
+		{
+			return this.$get('notice/type');
+		},
+		flow()
+		{
+			return this.$get('notice/flow');
+		},
+		//
 		checkType()//TODO
 		{
 			return !!this.$options.components?.[this.type ?? null];
@@ -123,11 +133,11 @@ export default {
 		handle()
 		{
 			if (this.isBasic) return this.hide();
-			this.$store.dispatch('notice/handle');
+			this.$act('notice/handle');
 		},
 		hide()
 		{
-			this.$store.commit('notice/hide');
+			this.$set('notice/hide');
 		}
 	}
 }

@@ -27,7 +27,6 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
 import ModalHeader from '@/components/particles/ModalHeader';
 import ItemVillage from '@/components/particles/ItemVillage';
 
@@ -58,10 +57,14 @@ export default {
 	}),
 
 	computed: {
-		...mapGetters({
-			location: 'game/location',
-			villages: 'tasks/byVillage'
-		}),
+		location()
+		{
+			return this.$get('game/location');
+		},
+		villages()
+		{
+			return this.$get('tasks/byVillage');
+		},
 	},
 
 	methods: {

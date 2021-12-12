@@ -2,7 +2,10 @@
 	<button 
 		class="iProduct button rounded noSelect" 
 		type="button" 
-		@click="open"
+		@click="$set('notice/show', {
+			type: 'Product',
+			flow: item
+		})"
 	>
 		<svg class="icon absolute">
 			<use :xlink:href="'#icon-'+item.id"></use>
@@ -19,17 +22,5 @@ export default {
 	props: {
 		item: Object,
 	},
-	computed: {
-		
-	},
-	methods: {
-		open()
-		{
-			this.$store.commit('notice/show', {
-				type: 'Product',
-				flow: this.item
-			});
-		},
-	}
 }
 </script>

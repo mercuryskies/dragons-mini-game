@@ -43,7 +43,7 @@ export default {
 	computed: {
 		isAlive()
 		{
-			return this.$store.getters['game/alive'];
+			return this.$get('game/alive');
 		},
 		isGrid()
 		{

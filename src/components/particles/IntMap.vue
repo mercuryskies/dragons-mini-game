@@ -25,14 +25,14 @@ export default {
 	computed: {
 		location()
 		{
-			return this.$store.getters['game/locationInfo'];
+			return this.$get('game/locationInfo');
 		},
 	},
 
 	methods: {
 		open()
 		{
-			this.$store.commit('modal/show', {
+			this.$set('modal/show', {
 				type: 'Map'
 			});
 		},

@@ -41,7 +41,7 @@ export const getters = {
 	id: state => state.game?.gameId,
 	stage: state => state.stage,
 	started: state => !!state.game?.gameId,
-	alive: state => (state.game.lives > 0),
+	alive: state => !!(state.game.lives > 0),
 	data: state => {
 		let { username, location, reputation } = state;
 		return Object.assign({...state.game}, {
@@ -50,7 +50,7 @@ export const getters = {
 			reputation,
 		});
 	},
-	username: state => state.flow,
+	username: state => state.username,
 
 	//inventory
 	inventory: state => {
@@ -135,6 +135,11 @@ export const mutations = {
 		state.stage = 1;
 	},
 
+	SET_STAGE (state, data)
+	{
+		state.stage = data;
+	},
+
 	SET_REPUTATION (state, data)
 	{
 		state.reputation = data;
@@ -171,7 +176,7 @@ export const mutations = {
 		state.game = '';
 		state.reputation = '';
 		state.inventory = [];
-		state.username = '';
+		//state.username = '';
 		state.location = '';
 		state.place = '';
 		state.teleporting = false;

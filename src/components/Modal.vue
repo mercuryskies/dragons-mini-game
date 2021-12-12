@@ -2,19 +2,18 @@
 	<div 
 		class="modalArea fixed contain" 
 		v-show="isOpened" 
-		:class="{ opened: isOpened }"
+		:class="{ opened: isOpened, grayscale : !isAlive }"
 	><div class="modalInner fixed contain">
 		<button 
 			class="overlay fixed contain noSelect"
 			type="button" 
-			@click="hide"
+			@click="$set('modal/hide')"
 		/>
 		<component v-if="checkType" :is="type" :flow="flow"/>
 	</div></div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
 import Player from '@/components/modals/Player';
 import Menu from '@/components/modals/Menu';
 import Inventory from '@/components/modals/Inventory';
@@ -31,22 +30,26 @@ export default {
 	},
 
 	computed: {
-		...mapGetters({
-			isOpened: 'modal/opened',
-			type: 'modal/type',
-			flow: 'modal/flow'
-		}),
+		isAlive()
+		{
+			return this.$get('game/alive');
+		},
+		isOpened()
+		{
+			return this.$get('modal/opened');
+		},
+		type()
+		{
+			return this.$get('modal/type');
+		},
+		flow()
+		{
+			return this.$get('modal/flow');
+		},
 		checkType()
 		{
 			return (this.$options.components?.[this.type ?? null]);
 		}
 	},
-
-	methods: {
-		hide()
-		{
-			this.$store.commit('modal/hide');
-		}
-	}
 }
 </script>

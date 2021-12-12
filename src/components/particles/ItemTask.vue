@@ -14,7 +14,7 @@
 			<button
 				class="button block rounded border-outline"
 				type="button"
-				@click="take"
+				@click="$act('tasks/solve', item)"
 			>
 				<span class="absolute bg-glare rounded"><b class="typo-shadow">Try</b></span>
 			</button>
@@ -42,7 +42,8 @@ export default {
 			Risky
 			*/
 
-			let { probability = 'Sure thing', _out = '' } = this.item;
+			let { probability = 'Sure thing', encrypted, _out = '' } = this.item;
+			if (encrypted) return 'uncertainty';
 			switch (this.item.probability)
 			{
 				case 'Sure thing':
@@ -61,11 +62,5 @@ export default {
 			return _out;
 		}
 	},
-	methods: {
-		take()
-		{
-			this.$store.dispatch('tasks/solve', this.item);
-		},
-	}
 }
 </script>

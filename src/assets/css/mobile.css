@@ -5,6 +5,7 @@
 .instanceTitle {top:190px;}
 .modal.player .top {padding:0 40px;}
 .modal.player .reputation {padding:10px;}
+.iInventory {width:44%;}
 }
 
 @media screen and (max-width: 620px){

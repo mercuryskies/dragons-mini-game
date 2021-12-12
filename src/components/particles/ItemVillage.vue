@@ -3,7 +3,7 @@
 		move-disabled="true"
 		class="iMapVillage button absolute noSelect" 
 		type="button" 
-		@click="teleport"
+		@click="$act('game/teleport', item.name)"
 	>
 		<i :class="'icon far fa-'+item.icon"/>
 		<i v-if="item.name === location" class="iconLocation absolute far fa-times"/>
@@ -22,11 +22,5 @@ export default {
 		index: Number,
 		location: String
 	},
-	methods: {
-		teleport()
-		{
-			this.$store.dispatch('game/teleport', this.item.name);
-		},
-	}
 }
 </script>

@@ -36,12 +36,17 @@ export default {
 		username: '',
 	}),
 
+	mounted()
+	{
+		this.username = this.$get('game/username') ?? '';
+	},
+
 	methods: {
 		start()
 		{
-			let { username, $store } = this;
+			let { username, $act } = this;
 			if (!username) return;
-			$store.dispatch('game/start', { username });
+			$act('game/start', { username });
 		}
 	}
 }

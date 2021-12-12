@@ -1,9 +1,6 @@
 <template>
 	<div class="playground block contain" v-if="setArea">
-		<div 
-			class="area absolute contain"
-			
-		>
+		<div class="area absolute contain">
 			<div class="places absolute flex wrap evently">
 				<ItemPlace 
 					v-for="(item, index) in places"
@@ -48,13 +45,6 @@ export default {
 	components: {
 		ItemPlace,
 	},
-
-	data: () => ({
-		test: {
-			x: '',
-			y: ''
-		}
-	}),
 
 	computed: {
 		setArea()
@@ -149,12 +139,6 @@ export default {
 	},
 
 	methods: {
-		open()
-		{
-			this.$store.commit('modal/show', {
-				type: 'Quests'
-			});
-		},
 		isOdd(num)
 		{
 			return !!(num & 1);

@@ -8,9 +8,10 @@
 			</div>
 			<div class="controls block flex between">
 				<button
+					v-if="isAlive"
 					class="button rounded border-outline"
 					type="button"
-					@click="leave"
+					@click="pray"
 				><span class="typo-shadow">Pray</span></button>
 				<button
 					class="button rounded border-outline"
@@ -25,6 +26,7 @@
 <script>
 export default {
 	props: {
+		isAlive: Boolean,
 		place: Object,
 		location: Object
 	},
@@ -46,9 +48,19 @@ export default {
 	},
 
 	methods: {
+		pray()
+		{
+			const player = document.getElementById('playerControl');
+			if (!player) this.leave();
+			player.classList.add('prayed');
+			setTimeout(() => {
+				player.classList.remove('prayed');
+				this.leave();
+			}, 500);
+		},
 		leave()
 		{
-			this.$store.commit('game/leavePlace');
+			this.$set('game/leavePlace');
 		}
 	}
 }

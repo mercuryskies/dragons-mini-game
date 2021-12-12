@@ -36,7 +36,7 @@ export default {
 	computed: {
 		journal()
 		{
-			return this.$store.getters['tasks/journal'];
+			return this.$get('tasks/journal');
 		},
 	},
 }

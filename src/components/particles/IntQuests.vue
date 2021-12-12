@@ -3,7 +3,9 @@
 		<button
 			class="control circle border-outline"
 			type="button"
-			@click="open"
+			@click="$set('modal/show', {
+				type: 'Quests'
+			})"
 		>
 			<div class="icon absolute circle bg-glare">
 				<i class="far fa-medal typo-shadow"></i>
@@ -11,16 +13,3 @@
 		</button>
 	</div>
 </template>
-
-<script>
-export default {
-	methods: {
-		open()
-		{
-			this.$store.commit('modal/show', {
-				type: 'Quests'
-			});
-		},
-	}
-}
-</script>

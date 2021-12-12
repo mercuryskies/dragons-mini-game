@@ -42,14 +42,14 @@ export default {
 			switch (action)
 			{
 				case 'about':
-					this.$store.commit('modal/hide');
+					this.$set('modal/hide');
 					this.$router.push('about');
 					break;
 				case 'start':
-					this.$store.dispatch('game/end');
+					this.$act('game/end');
 					break;
 				case 'end':
-					this.$store.dispatch('game/end');
+					this.$act('game/end');
 					break;
 			}
 		}

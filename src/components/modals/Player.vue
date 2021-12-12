@@ -60,7 +60,7 @@ export default {
 	computed: {
 		game()
 		{
-			return this.$store.getters['game/data'];
+			return this.$get('game/data');
 		},
 		setLives()
 		{

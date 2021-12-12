@@ -55,6 +55,8 @@ a:hover {text-decoration:none;}
 .int .button .icon {margin-right:5px;}
 .int.map .button {left:100px;}
 .int.inventory .button {right:100px;}
+/**/
+#playerControl.prayed, #playerControl.prayed .avatar .overlay {background:rgba(255,255,255,.5);}
 
 /* health */
 .health .bar span {flex:1 1 0px;background:#4eb760;border-right:1px solid rgba(0,0,0,.4);}
@@ -68,7 +70,7 @@ a:hover {text-decoration:none;}
 .instance > .inner {width:100%;max-width:600px;margin:0 auto;z-index:6;}
 /**/
 .instance .sky {width:100%;height:150px;top:0;left:0;z-index:6;}
-.instance .sky path {stroke:none;fill:#161720;}
+.instance .sky path {position:relative;stroke:none;fill:#161720;z-index:6;}
 /**/
 .instanceTitle {width:150px;position:absolute;top:40px;left:50%;margin-left:-75px;font-size:14px;background:#000;z-index:7;}
 .instanceTitle span {display:inline-block;position:relative;line-height:36px;}
@@ -85,6 +87,7 @@ a:hover {text-decoration:none;}
 .instanceGuide .guide img {z-index:7;}
 .instanceGuide .guide:before {width:110px;position:absolute;bottom:20px;left:-10px;-webkit-box-shadow:0 0 60px 30px rgba(0,0,0,.5);-moz-box-shadow:0 0 60px 30px rgba(0,0,0,.5);box-shadow:0 0 60px 30px rgba(0,0,0,.5);content:'';z-index:6;}
 .instanceGuide .guide .dialogue {width:200px;bottom:170px;left:130px;padding:30px;color:#ddd;background:rgba(0,0,0,.5);}
+.instanceGuide .guide .dialogue:before {width:0;height:0;position:absolute;bottom:25px;left:-10px;border-style:solid;border-width:5px 10px 5px 0;border-color:transparent rgba(0,0,0,.5) transparent transparent;content:'';}
 .instanceGuide .guide .dialogue p {margin:10px 0;}
 .instanceGuide .guide .dialogue .button {height:40px;font-size:14px;font-weight:bold;}
 /**/
@@ -95,9 +98,9 @@ a:hover {text-decoration:none;}
 .playground .area {background:#72a194;}
 .playground .grounds {top:50%;left:50%;}
 .playground .ground {position:relative;z-index:6;}
-.playground .ground.lvl-1 {padding:30px;background:#7cada0;z-index:7;}
+.playground .ground.lvl-1 {padding:30px;/*background:#7cada0;*/z-index:7;}
 .playground .ground.lvl-1 i {width:20px;height:20px;display:inline-block;font-size:14px;}
-.playground .ground.center {background:#a0d1c3;}
+.playground .ground.center {/*background:#a0d1c3;*/}
 .playground .ground.lvl-1, .playground .ground.center {}
 .playground .places {width:260px;height:260px;position:absolute;top:50%;left:50%;margin-left:-130px;margin-top:-130px;padding:10px;z-index:100;}
 
@@ -131,13 +134,14 @@ a:hover {text-decoration:none;}
 .iMapVillage .location {}
 .iMapVillage > .icon {font-size:40px;}
 .iMapVillage > .icon, .iMapVillage .title {color:#6c6c6c;}
-.iMapVillage .iconLocation {font-size:30px;left:-10px;color:#6c6033;text-shadow:1px 1px 3px rgba(0,0,0,.3);}
+.iMapVillage .iconLocation {font-size:30px;left:-6px;color:#6c6033;text-shadow:1px 1px 3px rgba(0,0,0,.3);}
 .iMapVillage .title {width:100px;top:65px;left:50%;margin-left:-50px;font-size:18px;font-weight:bold;}
 .iMapVillage .info {width:30px;height:30px;top:30px;right:-20px;color:#6b5891;}
 .iMapVillage .info .icon {font-size:20px;}
 .iMapVillage .info span {width:20px;left:5px;font-size:10px;font-weight:bold;}
 /*place*/
 .iPlace {width:80px;height:80px;position:relative;color:#000;}
+.iPlace .title {margin-top:5px;}
 .iPlace .info {width:20px;line-height:20px;top:5px;left:50%;margin-left:5px;color:#ddd;background:#6b5891;}
 .iPlace.hall .icon {font-size:20px;}
 /*product*/
@@ -148,7 +152,8 @@ a:hover {text-decoration:none;}
 .iProduct .price span {margin-left:5px;}
 .iProduct:hover {-webkit-box-shadow:inset 0 0 7px rgba(199,199,199,.4);-moz-box-shadow:inset 0 0 7px rgba(199,199,199,.4);box-shadow:inset 0 0 7px rgba(199,199,199,.4);}
 /*inventory*/
-.iInventory {width:23%;position:relative;padding:10px;flex-flow:column;margin:1%;background:#000;}
+.iInventory {width:23%;height:100px;position:relative;padding:0;margin:2%;background:transparent;}
+.iInventory .icon {width:100%;height:100%;}
 /*task*/
 .iTask, .iJournal {padding:0 10px;color:#fff;}
 .iTask .inner, .iJournal {border-bottom:2px dotted #1a1a1a;}

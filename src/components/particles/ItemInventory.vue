@@ -4,7 +4,7 @@
 		type="button" 
 		@click="open"
 	>
-		<svg class="icon block">
+		<svg class="icon">
 			<use :xlink:href="'#icon-'+item.id"></use>
 		</svg>
 	</button>
@@ -15,15 +15,12 @@ export default {
 	props: {
 		item: Object,
 	},
-	computed: {
-		
-	},
 	methods: {
 		open()
 		{
 			let { name, ...item } = this.item;
 			Object.assign(item, {description: name});
-			this.$store.commit('notice/show', {
+			this.$set('notice/show', {
 				type: 'Inventory',
 				flow: item
 			});

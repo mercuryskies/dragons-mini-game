@@ -3,16 +3,15 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 
-
-import axios from 'axios';
-import VueAxios from 'vue-axios';
-Vue.use(VueAxios, axios);
-
 import Vuebar from 'vuebar';
 Vue.use(Vuebar);
 
 import VueMeta from 'vue-meta';
 Vue.use(VueMeta);
+
+Vue.prototype.$get = (type) => store.getters[type];
+Vue.prototype.$set = (type, data) => store.commit(type, data);
+Vue.prototype.$act = (type, data) => store.dispatch(type, data);
 
 Vue.config.productionTip = false;
 

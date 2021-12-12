@@ -25,6 +25,7 @@ import Instance from '@/components/Instance';
 import Teleport from '@/components/Teleport';
 
 export default {
+
 	components: {
 		IntPlayer,
 		IntMenu,
@@ -38,20 +39,20 @@ export default {
 	computed: {
 		stage()
 		{
-			return this.$store.getters['game/stage'];
+			return this.$get('game/stage');
 		},
 		isAlive()
 		{
-			return this.$store.getters['game/alive'];
+			return this.$get('game/alive');
 		},
 		isTeleporting()
 		{
-			return this.$store.getters['game/teleporting'];
+			return this.$get('game/teleporting');
 		},
 		game()
-		{
-			return this.$store.getters['game/data'];
-		},
+		{ 
+			return this.$get('game/data');
+		}
 	},
 }
 </script>

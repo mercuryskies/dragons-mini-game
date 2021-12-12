@@ -3,15 +3,14 @@
 		class="instance block"
 		:class="[{contain: isCamp || place || location}, {withPadding: place}, game.location]"
 	>
-		<div class="sky absolute transition-03" v-show="!place">
-			<svg class="contain" viewBox="0 0 500 150" preserveAspectRatio="none">
-				<path d="M0.00,92.27 C216.83,192.92 304.30,8.39 500.00,109.03 L500.00,0.00 L0.00,0.00 Z"></path>
-			</svg>
-		</div>
+		<ParticlesStars v-show="!place"/>
 		<h1 class="instanceTitle centered rounded border-outline fadeInstance">
 			<span class="typo-shadow">{{game.location}}</span>
 		</h1>
-		<Camp v-if="isCamp"/>
+		<Camp 
+			v-if="isCamp"
+			:isAlive="isAlive"
+		/>
 		<Playground 
 			v-if="!place && !isCamp"
 			:places="places"
@@ -23,16 +22,17 @@
 			:is="setPlaceComponent" 
 			:place="setPlace" 
 			:location="location"
+			:isAlive="isAlive"
 		/>
 	</div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
 import Camp from '@/components/instances/Camp';
 import Playground from '@/components/instances/Playground';
 import PlaceItems from '@/components/instances/PlaceItems';
 import PlaceChurch from '@/components/instances/PlaceChurch';
+import ParticlesStars from '@/components/particles/ParticlesStars';
 
 export default {
 	props: {
@@ -43,32 +43,33 @@ export default {
 		Playground,
 		PlaceItems,
 		PlaceChurch,
+		ParticlesStars,
 	},
 
 	computed: {
-		isCamp()
-		{
-			return this.game.location === 'Camp';
-		},
-		isAlive()
-		{
-			return this.$store.getters['game/alive'];
-		},
 		location()
 		{
-			return this.$store.getters['game/locationInfo'];
+			return this.$get('game/locationInfo');
 		},
 		places()
 		{
-			return this.$store.getters['game/places'];
+			return this.$get('game/places');
 		},
 		place()
 		{
-			return this.$store.getters['game/place'];
+			return this.$get('game/place');
 		},
 		spawns()
 		{
-			return this.$store.getters['game/spawns'];
+			return this.$get('game/spawns');
+		},
+		isAlive()
+		{
+			return this.$get('game/alive');
+		},
+		isCamp()
+		{
+			return this.game.location === 'Camp';
 		},
 		setPlace()
 		{

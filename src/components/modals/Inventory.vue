@@ -43,7 +43,7 @@ export default {
 		},
 		inventory()
 		{
-			return this.$store.getters['game/inventory'];
+			return this.$get('game/inventory');
 		},
 	},
 }
