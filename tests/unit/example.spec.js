@@ -38,6 +38,7 @@ describe('Login.vue', () => {
 		expect(button.exists()).toBeTruthy();
 		await button.trigger('click');
 		expect(spyStart).toBeCalled();
+		expect(spyStart.mock.results[0].value).toBe(undefined);
 	})
 
 	it('it checks if username is provided, store is dispatched and game started', async () => {
