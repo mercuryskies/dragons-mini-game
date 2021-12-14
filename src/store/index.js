@@ -1,3 +1,5 @@
+require('babel-plugin-require-context-hook/register')();
+
 import Vue from 'vue';
 import Vuex from 'vuex';
 Vue.use(Vuex);

@@ -21,7 +21,7 @@
 			/>
 			<button 
 				type="submit" 
-				class="button rounded bg-glare" 
+				class="button rounded bg-glare noSelect" 
 				@click="start"
 			>
 				<span class="typo-shadow">Enter</span>
@@ -46,7 +46,7 @@ export default {
 		{
 			let { username, $act } = this;
 			if (!username) return;
-			$act('game/start', { username });
+			return $act('game/start', { username });
 		}
 	}
 }

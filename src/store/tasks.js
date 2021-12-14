@@ -73,8 +73,8 @@ export const actions = {
 		if (!gameId || !adId) return;
 		const { data } = await Client.solve({ gameId, adId });//TODO! model validation
 		const { message, ...stats } = data;
-		if (!message) return;
 		dispatch('init', gameId);//update tasks
+		if (!message) return;
 		commit('SET_JOURNAL', {...data, adId, msg});
 		this.dispatch('game/investigate');
 		this.commit('game/SET_STATS', stats);

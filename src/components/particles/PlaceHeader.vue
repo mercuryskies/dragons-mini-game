@@ -7,7 +7,7 @@
 			<i v-if="place.icon" :class="'typo-shadow far fa-'+place.icon"/>
 		</div>
 		<button 
-			class="button absolute rounded border-outline" 
+			class="button absolute rounded border-outline noSelect" 
 			type="button" 
 			@click="$set('game/leavePlace')"
 		>

@@ -203,6 +203,7 @@ export const actions = {
 		if (!gameId) return;//TODO! model validation
 		//start
 		commit('START_GAME', { ...game, gameId, username });
+		return data;
 	},
 
 	init ({ state, commit, dispatch })

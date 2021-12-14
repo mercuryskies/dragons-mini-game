@@ -12,7 +12,7 @@
 		</div>
 		<div class="info absolute">
 			<button
-				class="button block rounded border-outline"
+				class="button block rounded border-outline noSelect"
 				type="button"
 				@click="$act('tasks/solve', item)"
 			>

@@ -10,7 +10,7 @@
 		</div>
 		<h1 class="title typo-shadow">{{title}}</h1>
 		<button 
-			class="button btnClose absolute centered" 
+			class="button btnClose absolute centered noSelect" 
 			type="button"
 			@click="$set('modal/hide')"
 		>

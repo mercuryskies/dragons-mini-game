@@ -1,7 +1,7 @@
 <template>
 	<div class="int player fixed fadeIn">
 		<button
-			class="control circle border-outline transition-03"
+			class="control circle border-outline transition-03 noSelect"
 			type="button"
 			id="playerControl"
 			@click="open"

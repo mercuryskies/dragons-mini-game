@@ -1,7 +1,7 @@
 <template>
 	<div class="int map fixed fadeIn">
 		<button
-			class="control circle border-outline"
+			class="control circle border-outline noSelect"
 			type="button"
 			@click="open"
 		>
@@ -10,7 +10,7 @@
 			</div>
 		</button>
 		<button 
-			class="button absolute"
+			class="button absolute noSelect"
 			type="button"
 			@click="open"
 		>
